@@ -4,21 +4,17 @@ import "fmt"
 
 func main() {
 	maxWidth := 101
-	fmt.Println(" ") // 50 49 48
-	// stars 1 - 3 - 5 - .... - 101 - 99 - 97 - ....  - 1
+
 	var isUpperTriangle bool = true
 
 	spaceNo := (maxWidth - 1) / 2
 
 	starNo := 1
 
+	arrayMap := make([][]int, maxWidth)
+
 	for i := 0; i < maxWidth; i++ {
-		for spi := 0; spi < spaceNo; spi++ {
-			fmt.Print(" ")
-		}
-		for sti := 0; sti < starNo; sti++ {
-			fmt.Print("*")
-		}
+		arrayMap[i] = []int{spaceNo, starNo}
 		if starNo == maxWidth {
 			isUpperTriangle = false
 		}
@@ -28,6 +24,15 @@ func main() {
 		} else {
 			spaceNo++
 			starNo -= 2
+		}
+	}
+
+	for i := 0; i < len(arrayMap); i++ {
+		for j := 0; j < arrayMap[i][0]; j++ {
+			fmt.Print(" ")
+		}
+		for j := 0; j < arrayMap[i][1]; j++ {
+			fmt.Print("*")
 		}
 		fmt.Println()
 	}
